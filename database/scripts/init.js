@@ -37,9 +37,9 @@ async function initDatabase() {
     );
     if (checkDB.rowCount === 0) {
       await rootClient.query(`CREATE DATABASE ${DB_NAME};`);
-      console.log(`✅ Database '${DB_NAME}' created.`);
+      console.log(` Database '${DB_NAME}' created.`);
     } else {
-      console.log(`ℹ️ Database '${DB_NAME}' already exists.`);
+      console.log(` Database '${DB_NAME}' already exists.`);
     }
 
     await rootClient.end();
@@ -57,10 +57,10 @@ async function initDatabase() {
     await client.query(readSQL("create_enums.sql"));
     await client.query(readSQL("create_apartment_table.sql"));
 
-    console.log("✅ Apartment table ready.");
+    console.log(" Apartment table ready.");
     await client.end();
   } catch (err) {
-    console.error("❌ Error initializing database:", err.message);
+    console.error(" Error initializing database:", err.message);
   } finally {
     process.exit(0);
   }

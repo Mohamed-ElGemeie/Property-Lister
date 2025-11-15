@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "52ba3eb9-1957-4a27-959f-1fa870aa1520",
+		"name": "Property Lister",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37652203"
+	},
+	"item": [
+		{
+			"name": "ping",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/ping",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "ping",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/ping",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "list all apartments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/apartments",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"apartments"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "list all apartments",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/apartments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"apartments"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "get details 1 apartment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/apartments/628d0e77-6e9b-4d36-bde4-8d51413a6c2d",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"apartments",
+						"628d0e77-6e9b-4d36-bde4-8d51413a6c2d"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get details 1 apartment - 404",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/apartments/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"apartments",
+								"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"code\": 404,\n    \"message\": \"Apartment not found\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "get details 1 apartment - 400",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/apartments/abcd",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"apartments",
+								"abcd"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"code\": 400,\n    \"message\": \"Validation failed (uuid is expected)\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "get details 1 apartment - 200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/apartments/<put id of an apartment from the list all apartments route>",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"apartments",
+								"<put id of an apartment from the list all apartments route>"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"message\": \"OK\",\n    \"data\": {\n        \"id\": \"290bd34e-296b-44ad-b53c-31bdd684f130\",\n        \"name\": \"Old Shabrawy Store for Rent\",\n        \"max_guests\": 4,\n        \"bedrooms\": 2,\n        \"bathrooms\": 2,\n        \"beds\": 2,\n        \"description\": \"Beautiful apartment overlooking the Nile River.\",\n        \"longitude\": \"31.235700\",\n        \"latitude\": \"30.044400\",\n        \"price\": \"120.50\",\n        \"images\": [\n            \"img1.jpg\",\n            \"img2.jpg\"\n        ],\n        \"city\": \"Cairo\",\n        \"country\": \"Egypt\",\n        \"createdAt\": \"2025-11-15T06:52:34.906Z\",\n        \"updatedAt\": \"2025-11-15T06:52:34.906Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "create 1 apartment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Test 1\",\r\n  \"max_guests\": 4,\r\n  \"bedrooms\": 2,\r\n  \"bathrooms\": 2,\r\n  \"beds\": 2,\r\n  \"description\": \"Test 1.\",\r\n  \"longitude\": 31.2357,\r\n  \"latitude\": 30.0444,\r\n  \"price\": 250.75,\r\n  \"images\": [\r\n    \"https://example.com/image1.jpg\",\r\n    \"https://example.com/image2.jpg\"\r\n  ],\r\n  \"city\": \"Cairo\",\r\n  \"country\": \"Egypt\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/apartments",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"apartments"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create 1 apartment - 200 - Full",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  // Name must be a string with at least 2 characters\r\n  \"name\": \"Test 1\",\r\n\r\n  // max_guests must be an integer greater than 0\r\n  \"max_guests\": 4,\r\n\r\n  // bedrooms must be an integer >= 0\r\n  \"bedrooms\": 2,\r\n\r\n  // bathrooms must be an integer >= 0\r\n  \"bathrooms\": 2,\r\n\r\n  // beds must be an integer >= 0\r\n  \"beds\": 2,\r\n\r\n  // description is optional, defaults to empty string if not passed\r\n  \"description\": \"Test 1.\",\r\n\r\n  // longitude is required if latitude is passed, must be a number\r\n  \"longitude\": 31.2357,\r\n\r\n  // latitude is required if longitude is passed, must be a number\r\n  \"latitude\": 30.0444,\r\n\r\n  // price must be a number greater than 0\r\n  \"price\": 250.75,\r\n\r\n  // images is optional, must be an array of non-empty strings, defaults to empty array\r\n  \"images\": [\r\n    \"https://example.com/image1.jpg\",\r\n    \"https://example.com/image2.jpg\"\r\n  ],\r\n\r\n  // city is required, must be one of CityEnum values\r\n  \"city\": \"Cairo\",\r\n\r\n  // country is required, must be one of CountryEnum values\r\n  \"country\": \"Egypt\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/apartments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"apartments"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"message\": \"OK\",\n    \"data\": {\n        \"id\": \"f86f4bfb-1b85-4df6-9303-4aaac5df50cf\"\n    }\n}"
+				},
+				{
+					"name": "create 1 apartment - 200 - Bare minimum",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Test 2\",\r\n  \"max_guests\": 2,\r\n  \"bedrooms\": 1,\r\n  \"bathrooms\": 1,\r\n  \"beds\": 1,\r\n  \"longitude\": 31.2357,\r\n  \"latitude\": 30.0444,\r\n  \"price\": 100.0,\r\n  \"city\": \"Cairo\",\r\n  \"country\": \"Egypt\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/apartments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"apartments"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"message\": \"OK\",\n    \"data\": {\n        \"id\": \"61d45611-20ae-474a-9b0a-777e0c06d289\"\n    }\n}"
+				},
+				{
+					"name": "create 1 apartment - 400",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"A\",\r\n    \"max_guests\": 0,\r\n    \"bedrooms\": -1,\r\n    \"bathrooms\": -2,\r\n    \"beds\": -1,\r\n    \"description\": 123,\r\n    \"longitude\": 200,\r\n    \"latitude\": -200,\r\n    \"price\": -10,\r\n    \"images\": [\r\n        \"\",\r\n        \"   \",\r\n        null\r\n    ],\r\n    \"city\": \"InvalidCity\",\r\n    \"country\": \"Mars\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/apartments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"apartments"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"code\": 400,\n    \"message\": \"Bad Request\",\n    \"data\": null,\n    \"errors\": {\n        \"name\": \"name must be at least 2 characters\",\n        \"max_guests\": \"max_guests must be greater than 0\",\n        \"bedrooms\": \"bedrooms must be 0 or more\",\n        \"bathrooms\": \"bathrooms must be 0 or more\",\n        \"beds\": \"beds must be 0 or more\",\n        \"longitude\": \"longitude must be <= 180\",\n        \"latitude\": \"latitude must be >= -90\",\n        \"price\": \"price must be greater than 0\",\n        \"images\": \"images must be an array of non-empty strings\",\n        \"city\": \"city must be one of the following values: Cairo, Alexandria, Giza, Luxor, Aswan, Port Said, Suez, Shubra El Kheima, Tanta, Mansoura, Hurghada, Sharm El Sheikh, Faiyum, Ismailia, Minya, Damietta, Asyut, Beni Suef, Damanhur, Qena, Al Mahallah al Kubra, El Alamein, Shibin al Kawm, Siwa, Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah, Umm Al Quwain, Al Ain, Kalba, Khor Fakkan, Dibba Al Fujairah, Dibba Al Hisn, Al Madam, Al Awir, Al Manama\",\n        \"country\": \"country must be one of the following values: Egypt, UAE\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "asdf",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

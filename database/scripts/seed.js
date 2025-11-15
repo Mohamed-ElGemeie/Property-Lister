@@ -26,9 +26,9 @@ async function seed() {
   try {
     await client.connect();
     const res = await client.query(readSQL("seed_apartments.sql"));
-    console.log(`✅ Seeded ${res.rowCount} apartments.`);
+    console.log(` Seeded ${res.rowCount} apartments.`);
   } catch (err) {
-    console.error("❌ Seeding failed:", err.message);
+    console.error(" Seeding failed:", err.message);
   } finally {
     await client.end();
   }

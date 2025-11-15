@@ -1,0 +1,2 @@
+export const CITIES = ["Cairo", "Alexandria", "Giza", "Luxor", "Aswan", "Port Said", "Suez", "Shubra El Kheima", "Tanta", "Mansoura", "Hurghada", "Sharm El Sheikh", "Faiyum", "Ismailia", "Minya", "Damietta", "Asyut", "Beni Suef", "Damanhur", "Qena", "Al Mahallah al Kubra", "El Alamein", "Shibin al Kawm", "Siwa", "Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Ras Al Khaimah", "Fujairah", "Umm Al Quwain", "Al Ain", "Kalba", "Khor Fakkan", "Dibba Al Fujairah", "Dibba Al Hisn", "Al Madam", "Al Awir", "Al Manama"];
+export const COUNTRIES = ["Egypt", "UAE"];

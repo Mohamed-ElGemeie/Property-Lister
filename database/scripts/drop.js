@@ -26,11 +26,11 @@ async function dumpDatabase() {
     );
 
     if (checkRes.rowCount === 0) {
-      console.log(`ℹ️ Database "${DB_NAME}" does NOT exist. Nothing to drop.`);
+      console.log(` Database "${DB_NAME}" does NOT exist. Nothing to drop.`);
       return;
     }
 
-    console.log(`⚠️ Database "${DB_NAME}" found. Dropping...`);
+    console.log(` Database "${DB_NAME}" found. Dropping...`);
 
     await systemClient.query(`
       SELECT pg_terminate_backend(pid)
@@ -39,10 +39,10 @@ async function dumpDatabase() {
     `, [DB_NAME]);
 
     await systemClient.query(`DROP DATABASE "${DB_NAME}"`);
-    console.log(`🗑️ Database "${DB_NAME}" dropped successfully.`);
+    console.log(` Database "${DB_NAME}" dropped successfully.`);
 
   } catch (err) {
-    console.error("❌ Dump failed:", err.message);
+    console.error(" Dump failed:", err.message);
   } finally {
     await systemClient.end();
   }

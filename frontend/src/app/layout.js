@@ -1,14 +1,21 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import "dotenv/config";
+import { Poppins, Roboto_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/views/Header";
+import Footer from "@/views/Footer";
+import { Toaster } from "react-hot-toast";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Modern font pair: Poppins (sans-serif) and Roboto Mono (monospace)
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["400", "600"], // Regular and semi-bold for nice text hierarchy
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const robotoMono = Roboto_Mono({
+  variable: "--font-roboto-mono",
   subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const metadata = {
@@ -19,10 +26,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Tabler Icons CDN */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+        />
+      </head>
+
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} ${robotoMono.variable} antialiased bg-white text-black`}
       >
-        {children}
+                <Toaster position='top-right'/>
+
+        <Header />
+        <main className="max-w-6xl mx-auto px-4 py-8">{children}</main>
+        <Footer />
       </body>
     </html>
   );
