@@ -23,28 +23,31 @@ services:
       - db
     env_file:
       - ./database/.env  
-    command: ["./wait_for_db.sh", "sh", "-c", "npm run drop && npm run init && npm run seed && npm run test"]
+    command: ["./wait_for_db.sh", "sh", "-c", "npm run drop && npm run init && npm run seed && npm run test && touch /shared/db-init.done"]
     volumes:
       - ./database:/app
+      - db-init-done:/shared
     restart: "no"
 
 
-  # backend:
-  #   build:
-  #     context: ./backend
-  #     dockerfile: Dockerfile
-  #   container_name: backend
-  #   restart: unless-stopped
-  #   env_file:
-  #     - ./backend/.env
-  #   depends_on:
-  #     - db
-  #     - db-init
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./backend:/app
-  #   command: ["./waitfordb-test-start.sh", "db", "5432", "npm", "run", "start:dev"]
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - db
+      - db-init
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - db-init-done:/shared
+    command: ["./waitfordb-test-start.sh", "db", "5432", "npm", "run", "start:dev"]
 
 volumes:
   db-data:
+  db-init-done:
