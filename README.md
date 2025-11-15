@@ -6,19 +6,6 @@ Lightweight property-listing web application (NestJS backend + Next.js frontend)
 
 **Quick summary:** a simple listings service exposing a small REST API to create and retrieve property/apartment listings and a Next.js frontend that consumes that API.
 
----
-
-**Contents**
-
-- What it is
-- Why it is useful
-- Getting started (Docker and local development)
-- Examples (API snippets)
-- Help & resources
-- Maintainers & contributing
-
----
-
 ## What the project does
 
 Property-Lister provides:
@@ -32,12 +19,6 @@ Key server endpoints (backend):
 - `GET /apartments` — list all apartments
 - `GET /apartments/:id` — get one apartment (UUID)
 - `POST /apartments` — create a new apartment (see example payload below)
-
-## Why this project is useful
-
-- Small, focused codebase that demonstrates a complete full-stack flow (DB → API → frontend).
-- Ready-to-run Docker setup for reproducible local development and CI experiments.
-- Includes example tests and DB seed/init scripts to quickly populate a working dataset.
 
 ## Getting started
 
@@ -183,12 +164,3 @@ The `CreateApartmentDto` in the backend enforces validation (required fields, ty
 - `database/` — DB Dockerfile, seed/init/drop scripts and tests
 - `docker-compose.yml` — development compose setup
 
----
-
-If you'd like, I can also:
-
-- add a minimal `CONTRIBUTING.md` template
-- add GitHub Actions CI example for tests
-- add example `.env` files (safely excluding secrets)
-
-Feel free to tell me which of these you'd like next.
