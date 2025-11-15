@@ -2,7 +2,7 @@ const { Client } = require("pg");
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
 
-const DB_HOST = "localhost";
+const DB_HOST = process.env.DB_HOST;
 const DB_PORT = 5432;
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
