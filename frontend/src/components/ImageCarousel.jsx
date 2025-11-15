@@ -1,9 +1,9 @@
-'use clie'
+'use client';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function ImageCarousel({ images }) {
+export default function ImageCarousel({ images, height = 420 }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -11,12 +11,15 @@ export default function ImageCarousel({ images }) {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000, // 2 seconds
+    autoplaySpeed: 2000,
     arrows: false,
   };
 
   return (
-    <div className={`w-full h-[50vh]  overflow-hidden rounded-2xl mb-6`}>
+    <div
+      className="w-full overflow-hidden rounded-2xl mb-6"
+      style={{ height: `${height}px` }}
+    >
       <Slider {...settings}>
         {images && images.length > 0 ? (
           images.map((img, index) => (
@@ -24,7 +27,7 @@ export default function ImageCarousel({ images }) {
               <img
                 src={img}
                 alt={`Slide ${index + 1}`}
-                className={`w-fullh-[50vh]  object-cover rounded-2xl`}
+                className="w-full h-full object-cover rounded-2xl"
               />
             </div>
           ))
@@ -33,7 +36,7 @@ export default function ImageCarousel({ images }) {
             <img
               src="placeholder.png"
               alt="placeholder"
-              className={`w-full h-[50vh]  object-cover rounded-2xl`}
+              className="w-full h-full object-cover rounded-2xl"
             />
           </div>
         )}

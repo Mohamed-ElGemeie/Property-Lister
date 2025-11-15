@@ -5,7 +5,7 @@ export default function SingleListing({ listing }) {
     <div className="max-w-5xl mx-auto pb-12">
 
       {/* HERO IMAGE CAROUSEL */}
-      <ImageCarousel images={listing.images} />
+      <ImageCarousel images={listing.images} height={300} />
 
       {/* TITLE */}
       <h1 className="text-3xl font-bold mb-2">{listing.name}</h1>

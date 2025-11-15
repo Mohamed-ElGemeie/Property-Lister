@@ -62,14 +62,27 @@ There are two main ways to run the project: with Docker Compose (recommended for
 docker-compose up --build
 ```
 
-3. Once containers are ready:
+3. **Wait for the backend to be ready.** Monitor the logs and wait until you see:
 
-- Backend: http://localhost:3000
-- Frontend: http://localhost:3001
+```
+backend | [Nest] 242  - 11/15/2025, 4:15:15 PM     LOG [NestApplication] Nest application successfully started
+```
+
+This indicates the backend has initialized, connected to the database, and is ready to accept requests.
+
+4. Once the backend is ready, you can access the services:
+
+| Service | URL | Purpose |
+|---------|-----|---------|
+| **Frontend** | http://localhost:3001 | Web interface for browsing and creating listings |
+| **Backend API** | http://localhost:3000 | REST API endpoints (e.g., `/apartments`) |
+| **Database** | localhost:5432 | PostgreSQL (internal only) |
 
 Notes:
 
 - The `db-init` service runs database drop/init/seed scripts and the e2e tests defined in `database/` before continuing.
+- The frontend automatically connects to the backend at `http://localhost:3000` (ensure this is set in `./frontend/.env`).
+- All services run in the same Docker network and can communicate internally.
 
 ### Local development (without Docker)
 
@@ -162,26 +175,6 @@ curl -X POST http://localhost:3000/apartments -H "Content-Type: application/json
 
 The `CreateApartmentDto` in the backend enforces validation (required fields, types and ranges). See `/backend/src/modules/apartments/dto/create-apartment.dto.ts` for the exact schema.
 
-## Where to get help
-
-- Open an issue in this repository for bugs or feature requests.
-- Check the backend and frontend READMEs for subsystem-specific tips:
-	- Backend: `./backend/README.md`
-	- Frontend: `./frontend/README.md`
-- For framework-specific questions consult:
-	- NestJS docs: https://docs.nestjs.com
-	- Next.js docs: https://nextjs.org/docs
-
-## Who maintains and contributes
-
-- Maintainer: Mohamed ElGemeie
-
-Contributing
-
-- Contributions are welcome. Please open an issue first if you'd like to propose a larger change.
-- Keep changes small and focused and open a pull request against the `main` branch.
-
-If you want to add formal contribution guidelines, add a `CONTRIBUTING.md` at the repo root and link it here.
 
 ## Project layout (short)
 
